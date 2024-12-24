@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterestSphere</title>
+    <style>
+        /* Styles for all integrated pages */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e60023;
+        }
+        .nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #555;
+        }
+        .auth-buttons button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .auth-buttons .login {
+            background-color: white;
+            color: #e60023;
+            border: 1px solid #e60023;
+        }
+        .auth-buttons .signup {
+            background-color: #e60023;
+            color: white;
+        }
+        .main {
+            text-align: center;
+            margin: 50px 0;
+        }
+        .welcome-section h1 {
+            font-size: 48px;
+            color: #333;
+        }
+        button {
+            background-color: #e60023;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c7001e;
+        }
+        .modal {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            padding: 20px;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Index Page Content -->
+    <header class="header">
+        <div class="logo">InterestSphere</div>
+        <nav class="nav">
+            <a href="#">Today</a>
+            <a href="#">Watch</a>
+            <a href="#">Explore</a>
+        </nav>
+        <div class="auth-buttons">
+            <button class="login" id="show-login">Log in</button>
+            <button class="signup" id="show-signup">Sign up</button>
+        </div>
+    </header>
+    <main class="main">
+        <section class="welcome-section">
+            <h1>Get your next</h1>
+        </section>
+        <section id="forms" class="hidden">
+            <div id="signup-form">
+                <h2>Sign Up</h2>
+                <button class="button" id="signup-submit">Sign Up</button>
+            </div>
+            <div id="login-form" class="hidden">
+                <h2>Log In</h2>
+                <button class="button" id="login-submit">Log In</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('login-submit').addEventListener('click', () => {
+            document.querySelector('.welcome-card').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('signup-submit').addEventListener('click', () => {
+            document.querySelector('.welcome-card').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+    <!-- Welcome Page Content -->
+    <div class="welcome-card" style="margin-top: 50px; padding: 20px;">
+        <h2>Welcome to InterestSphere</h2>
+        <button id="next-button">Next</button>
+    </div>
+    <script>
+        document.getElementById('next-button').addEventListener('click', () => {
+            document.querySelector('.modal').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+    <!-- Gender Page Content -->
+    <div class="modal" style="margin-top: 50px; padding: 20px;">
+        <h2>Select Your Gender</h2>
+        <form id="gender-form">
+            <label><input type="radio" name="gender" value="Male"> Male</label><br>
+            <label><input type="radio" name="gender" value="Female"> Female</label><br>
+            <label><input type="radio" name="gender" value="Other"> Other</label><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('gender-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const selectedGender = document.querySelector('input[name="gender"]:checked');
+            if (selectedGender) {
+                alert(`Gender selected: ${selectedGender.value}`);
+            } else {
+                alert('Please select a gender.');
+            }
+        });
+    </script>
+</body>
+</html>
